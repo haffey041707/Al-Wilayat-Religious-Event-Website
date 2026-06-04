@@ -35,6 +35,18 @@
         letter-spacing: 0;
       }
 
+      html {
+        overflow-x: hidden;
+      }
+
+      body {
+        overflow-x: hidden;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
       button,
       input {
         font: inherit;
@@ -52,7 +64,7 @@
 
       .app {
         min-height: 100vh;
-        overflow: hidden;
+        overflow-x: hidden;
         background:
           radial-gradient(circle at 18% 58%, rgba(47, 125, 114, 0.18), transparent 28rem),
           linear-gradient(180deg, #080816, #120d14 62%, #080816);
@@ -601,6 +613,7 @@
         position: relative;
         width: 230px;
         height: 330px;
+        --robot-scale: 1;
         transform-style: preserve-3d;
         animation: robotFloat 4.2s ease-in-out infinite;
       }
@@ -1144,10 +1157,10 @@
       @keyframes robotFloat {
         0%,
         100% {
-          transform: translateY(0) rotateY(-8deg);
+          transform: translateY(0) rotateY(-8deg) scale(var(--robot-scale));
         }
         50% {
-          transform: translateY(-16px) rotateY(8deg);
+          transform: translateY(-16px) rotateY(8deg) scale(var(--robot-scale));
         }
       }
 
@@ -1250,8 +1263,50 @@
       }
 
       @media (max-width: 720px) {
+        .hero {
+          min-height: 66svh;
+          background-position: center top;
+        }
+
+        .system-name {
+          top: 0.8rem;
+          left: 0.8rem;
+          max-width: calc(100vw - 1.6rem);
+          padding: 0.52rem 0.7rem;
+          font-size: 1rem;
+        }
+
+        .hero-hadith {
+          inset-inline: 0.9rem;
+          bottom: 1rem;
+          font-size: clamp(1.2rem, 8vw, 2.1rem);
+          line-height: 1.55;
+        }
+
+        .slides {
+          padding: 1.1rem 0.7rem 1.8rem;
+        }
+
+        .slides-head {
+          display: block;
+          margin-bottom: 0.75rem;
+        }
+
+        .slides-head h2 {
+          font-size: clamp(1.75rem, 10vw, 2.65rem);
+          line-height: 1.04;
+        }
+
         .tabs {
+          width: 100%;
           grid-template-columns: repeat(2, minmax(0, 1fr));
+          margin-top: 0.85rem;
+        }
+
+        .tab {
+          min-height: 2.35rem;
+          padding-inline: 0.35rem;
+          font-size: 0.78rem;
         }
 
         .stage,
@@ -1259,28 +1314,109 @@
           min-height: auto;
         }
 
+        .stage {
+          border-radius: 8px;
+        }
+
+        .slide {
+          padding: 0.85rem;
+        }
+
+        .toolbar {
+          align-items: flex-start;
+        }
+
+        .panel {
+          padding: 0.95rem;
+        }
+
+        .panel h3 {
+          font-size: 1.28rem;
+        }
+
         .wish-card {
           aspect-ratio: 4 / 5;
+          transform: none;
+          animation: cardFloatMobile 5.5s ease-in-out infinite alternate;
+        }
+
+        .card-placeholder {
+          width: 100%;
+          min-height: 58vh;
+          max-height: 520px;
+          aspect-ratio: 4 / 5;
+        }
+
+        .card-message {
+          font-size: clamp(0.85rem, 4.8vw, 1.3rem);
+        }
+
+        .card-message.rtl {
+          font-size: clamp(0.95rem, 5.3vw, 1.45rem);
+        }
+
+        .from-line {
+          font-size: clamp(0.78rem, 4vw, 1rem);
         }
 
         .thumbs {
           grid-auto-columns: 64px;
         }
 
+        .copy-block h3 {
+          font-size: clamp(1.8rem, 11vw, 2.75rem);
+          line-height: 1.04;
+          overflow-wrap: anywhere;
+        }
+
+        .copy-block .body {
+          font-size: 0.98rem;
+          line-height: 1.6;
+        }
+
         .robot-stage {
-          min-height: 380px;
+          min-height: 300px;
+          order: 2;
         }
 
         .robot {
-          transform: scale(0.82);
+          --robot-scale: 0.78;
         }
 
         .language-switch {
-          grid-template-columns: 1fr;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .language-switch button {
+          min-height: 2.35rem;
+          font-size: 0.78rem;
+        }
+
+        .controls {
+          display: grid;
+          grid-template-columns: 1fr 2.6rem 2.6rem auto;
+          gap: 0.5rem;
+        }
+
+        .timer {
+          min-width: 4.1rem;
+          text-align: center;
+        }
+
+        .country-orbit {
+          min-height: 280px;
+        }
+
+        .globe {
+          width: 156px;
+          height: 156px;
         }
 
         .orbit-flag {
-          transform: translate(-50%, -50%) rotate(var(--angle)) translateX(116px) rotate(calc(-1 * var(--angle)));
+          width: 2.45rem;
+          height: 2.45rem;
+          transform: translate(-50%, -50%) rotate(var(--angle)) translateX(104px) rotate(calc(-1 * var(--angle)));
+          font-size: 1.25rem;
         }
 
         .country-grid,
@@ -1295,6 +1431,81 @@
         .country strong,
         .country small {
           grid-column: 2;
+        }
+
+        .ref {
+          min-height: auto;
+          padding: 0.9rem;
+        }
+
+        .counter {
+          padding: 0.85rem;
+        }
+
+        .envelope-scene {
+          width: min(82vw, 320px);
+        }
+
+        .guidance-essay {
+          font-size: 0.98rem;
+          line-height: 1.65;
+        }
+
+        .guidance-signature {
+          text-align: left;
+        }
+      }
+
+      @media (max-width: 420px) {
+        .hero {
+          min-height: 58svh;
+        }
+
+        .slides {
+          padding-inline: 0.5rem;
+        }
+
+        .tabs {
+          grid-template-columns: 1fr;
+        }
+
+        .controls {
+          grid-template-columns: 1fr 2.55rem 2.55rem;
+        }
+
+        .timer {
+          grid-column: 1 / -1;
+          width: 100%;
+        }
+
+        .language-switch {
+          grid-template-columns: 1fr;
+        }
+
+        .country {
+          gap: 0.55rem;
+          padding: 0.65rem;
+        }
+
+        .country .flag {
+          font-size: 1.55rem;
+        }
+
+        .country strong {
+          white-space: normal;
+        }
+
+        .orbit-flag {
+          transform: translate(-50%, -50%) rotate(var(--angle)) translateX(92px) rotate(calc(-1 * var(--angle)));
+        }
+      }
+
+      @keyframes cardFloatMobile {
+        from {
+          transform: translateY(0);
+        }
+        to {
+          transform: translateY(-7px);
         }
       }
     </style>
