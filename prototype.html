@@ -156,16 +156,61 @@
         inset-inline: 1rem;
         bottom: 1.4rem;
         z-index: 2;
+        display: grid;
         max-width: 980px;
         margin: auto;
+        overflow: hidden;
+        place-items: center;
+        border: 1px solid rgba(255, 241, 170, 0.24);
+        border-radius: 8px;
+        background:
+          linear-gradient(135deg, rgba(255, 241, 170, 0.13), rgba(47, 125, 114, 0.14)),
+          rgba(8, 8, 22, 0.48);
+        box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32), inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+        backdrop-filter: blur(13px);
         direction: rtl;
         color: #fff8d7;
         font-family: "Noto Naskh Arabic", Amiri, "Scheherazade New", serif;
         font-size: clamp(1.45rem, 3.4vw, 3.5rem);
         font-weight: 900;
         line-height: 1.7;
+        padding: 0.62rem 1.1rem 0.82rem;
         text-align: center;
         text-shadow: 0 8px 24px rgba(0, 0, 0, 0.38);
+        animation: bannerReveal 900ms ease-out both, bannerFloat 5.8s ease-in-out infinite alternate;
+        isolation: isolate;
+      }
+
+      .hero-hadith::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        background: linear-gradient(105deg, transparent 0 34%, rgba(255, 241, 170, 0.28) 48%, transparent 64% 100%);
+        pointer-events: none;
+        transform: translateX(120%);
+        animation: bannerShine 5.6s ease-in-out infinite;
+      }
+
+      .hero-hadith::after {
+        content: "";
+        position: absolute;
+        right: 12%;
+        bottom: 0.34rem;
+        left: 12%;
+        z-index: 1;
+        height: 1px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, transparent, rgba(255, 241, 170, 0.78), transparent);
+        box-shadow: 0 0 18px rgba(255, 241, 170, 0.42);
+        animation: bannerLine 3.8s ease-in-out infinite alternate;
+      }
+
+      .hero-hadith span {
+        position: relative;
+        z-index: 2;
+        display: block;
+        animation: arabicTextGlow 4.2s ease-in-out infinite;
       }
 
       .slides {
@@ -1119,6 +1164,60 @@
         }
       }
 
+      @keyframes bannerReveal {
+        from {
+          opacity: 0;
+          transform: translateY(18px) scale(0.98);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      @keyframes bannerFloat {
+        from {
+          translate: 0 0;
+        }
+        to {
+          translate: 0 -8px;
+        }
+      }
+
+      @keyframes bannerShine {
+        0%,
+        45% {
+          transform: translateX(120%);
+        }
+        70%,
+        100% {
+          transform: translateX(-120%);
+        }
+      }
+
+      @keyframes bannerLine {
+        from {
+          opacity: 0.45;
+          transform: scaleX(0.72);
+        }
+        to {
+          opacity: 1;
+          transform: scaleX(1);
+        }
+      }
+
+      @keyframes arabicTextGlow {
+        0%,
+        100% {
+          color: #fff8d7;
+          text-shadow: 0 8px 24px rgba(0, 0, 0, 0.38), 0 0 0 rgba(255, 241, 170, 0);
+        }
+        50% {
+          color: #fff1aa;
+          text-shadow: 0 8px 24px rgba(0, 0, 0, 0.42), 0 0 24px rgba(255, 241, 170, 0.4);
+        }
+      }
+
       @keyframes slideIn {
         from {
           opacity: 0;
@@ -1281,6 +1380,7 @@
           bottom: 1rem;
           font-size: clamp(1.2rem, 8vw, 2.1rem);
           line-height: 1.55;
+          padding: 0.55rem 0.75rem 0.72rem;
         }
 
         .slides {
@@ -1461,6 +1561,11 @@
           min-height: 58svh;
         }
 
+        .hero-hadith {
+          inset-inline: 0.55rem;
+          font-size: clamp(1.06rem, 7.4vw, 1.72rem);
+        }
+
         .slides {
           padding-inline: 0.5rem;
         }
@@ -1515,7 +1620,7 @@
       <section class="hero">
         <div class="system-name">Al-Wilayat</div>
         <div id="sparks"></div>
-        <div class="hero-hadith">مَنْ كُنْتُ مَوْلَاهُ فَهَذَا عَلِيٌّ مَوْلَاهُ</div>
+        <div class="hero-hadith"><span>مَنْ كُنْتُ مَوْلَاهُ فَهَذَا عَلِيٌّ مَوْلَاهُ</span></div>
       </section>
 
       <section class="slides">
