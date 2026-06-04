@@ -1,0 +1,5 @@
+{
+  "installCommand": "echo No install required",
+  "buildCommand": "mkdir -p dist && cp prototype.html dist/index.html && cp -R public dist/public",
+  "outputDirectory": "dist"
+}

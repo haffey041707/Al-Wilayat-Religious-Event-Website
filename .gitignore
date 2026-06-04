@@ -1,0 +1,20 @@
+.DS_Store
+.env
+.env.local
+.next
+node_modules
+dist
+coverage
+*.log
+
+# Local editor/system files
+.DS_Store
+.vscode/
+
+# Unused generated media kept locally but not needed for deploy
+public/audio/ghadir-english*.m4a
+public/audio/ghadir-english.mp3
+public/audio/ghadir-urdu-asad.mp3
+public/ghadir/cards/card-1[1-9].jpg
+public/ghadir/cards/card-2[0-9].jpg
+public/ghadir/cards/card-30.jpg
