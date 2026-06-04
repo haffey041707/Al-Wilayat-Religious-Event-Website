@@ -82,3 +82,7 @@ prototype.html          Zero-dependency browser preview
 - Add licensed Takbir, Nasheed, or recitation files under `public/audio` for real audio playback.
 - Wire Google OAuth into the auth routes after creating Google credentials.
 - Use Cloudinary credentials if you later add uploads for generated cards.
+
+## License
+
+This project is source-available, not open-source. You may view and use the deployed website, but you may not modify, redistribute, republish, or reuse the source code or assets without written permission from Syed Muhammad Hafeez. See [LICENSE](LICENSE).
